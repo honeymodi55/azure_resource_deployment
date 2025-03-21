@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sampledotnetapp
+spec:
+  selector:
+    matchLabels:
+      app: sampledotnetapp
+  template:
+    metadata:
+      labels:
+        app: sampledotnetapp
+    spec:
+      containers:
+      - name: sampledotnetapp
+        image: dotnetdockerrepo.azurecr.io/dotnetappimage:latest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 5000
